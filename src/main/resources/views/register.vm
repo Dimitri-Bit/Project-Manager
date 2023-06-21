@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register Form</title>
+
+    <!-- Main JS -->
+    <script src="../public/old/app.js"></script>
+
+    <!-- Icon -->
+    <link rel="icon" href="../public/images/favicon.ico" />
+
+    <!-- A nice alert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Responsive Stuff -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form onsubmit="handleRegister(event)">
+    <label for="email">E-Mail:</label>
+    <input type="email" name="email" autocomplete="username" required>
+    <br>
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" autocomplete="password" required>
+    <button type="submit">Register</button>
+</form>
+
+<h2 id="response"></h2>
+</body>
+</html>

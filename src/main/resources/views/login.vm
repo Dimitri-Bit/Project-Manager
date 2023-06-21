@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../public/old/app.js"></script>
+
+    <!-- A nice alert library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<form action="/login" method="POST">
+    <ol>
+        <li>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" autocomplete="username" required>
+        </li>
+        <li>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" autocomplete="password" required>
+        </li>
+        <li>
+            <input type="submit" value="Login"/>
+        </li>
+        #if( $errors )
+        <script>
+          errorAlert("E-Mail ili sifra koju ste unijeli nisu tacne");
+        </script>
+        #end
+    </ol>
+</form>
+</body>
+</html>

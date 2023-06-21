@@ -1,0 +1,60 @@
+micronaut:
+  resources:
+    staticPaths:
+      - public:public
+  application:
+    name: project_Manager
+  security:
+    authentication: cookie
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+    # Redirect configuration
+    redirect:
+      login-failure: "/login/authFailed"
+      unauthorized:
+        url: "/login/auth"
+    #
+    # Allow access to resources in public folder
+    intercept-url-map:
+      - pattern: "/public/images/**"
+        http-method: "GET"
+        access:
+          - isAnonymous()
+
+      - pattern: "/public/js/**"
+        http-method: "GET"
+        access:
+          - isAnonymous()
+
+      - pattern: "/public/css/**"
+        http-method: "GET"
+        access:
+          - isAnonymous()
+    #
+
+  # Allow usage of static files in /resources/public
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: "/public/**"
+        paths: "classpath:public"
+        # Disable cache
+        cache-control:
+          no-cache: true
+        expires:
+          seconds: 0
+  #
+
+netty:
+  default:
+    allocator:
+      max-order: 3
+
+# Database URI
+mongodb:
+  uri: ${config.uri}
